@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c124704523067db46b5139ae537e6c2c, type: 3}
+  m_Name: Volkswagen Jetta 1984
+  m_EditorClassIdentifier: Game::Assets.Code.Cars.CarConfigSO
+  <CarId>k__BackingField: vw-jetta-1
+  <CarBrandName>k__BackingField: Volkswagen
+  <CarModelName>k__BackingField: Jetta
+  <Year>k__BackingField: 1984
+  <CarIcon>k__BackingField: {fileID: 21300000, guid: df2628299d3f67e489173e50de1f7743, type: 3}
+  <PriceMinMax>k__BackingField: {x: 40, y: 120}
+  <VisualName>k__BackingField: Volkswagen Jetta 1984

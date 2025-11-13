@@ -1,6 +1,8 @@
-﻿using Assets.Code.Infrastructure.DI;
+﻿using Assets.Code.Common.Time;
+using Assets.Code.Infrastructure.DI;
 using Assets.Code.Infrastructure.EntryPoints;
 using Assets.Code.Infrastructure.Loading;
+using Assets.Code.Infrastructure.SaveLoad;
 using Assets.Code.Infrastructure.SaveLoad.Infrastructure;
 using Assets.Code.Infrastructure.States.GameStates;
 using Assets.Code.Infrastructure.States.StateMachine;
@@ -14,9 +16,9 @@ namespace Assets.Code.Infrastructure.Installers
     {
         protected override void Install()
         {
-
             RegisterStaticData();
             RegisterInfrastructureServices();
+            RegisterPlayerServices();
             RegisterSaveLoaders();
             RegisterStates();
             RegisterFactories();
@@ -31,14 +33,22 @@ namespace Assets.Code.Infrastructure.Installers
 
         private void RegisterInfrastructureServices()
         {
+            Builder.Register<UnityTimeService>(Lifetime.Singleton).AsImplementedInterfaces();
             Builder.Register<GameRepository>(Lifetime.Transient).AsImplementedInterfaces();
             Builder.Register<GameStateMachine>(Lifetime.Singleton).AsImplementedInterfaces();
             Builder.Register<ScenesLoader>(Lifetime.Singleton).AsImplementedInterfaces();
         }
 
+        private void RegisterPlayerServices()
+        {
+            Builder.Register<GameSettingsContainer>(Lifetime.Singleton).AsSelf();
+        }
+
         private void RegisterSaveLoaders()
         {
 
+
+            Builder.Register<SaveLoadMetaService>(Lifetime.Singleton).AsSelf();
         }
 
         private void RegisterStates()
