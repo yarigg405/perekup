@@ -1,0 +1,467 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83406f74e1c6684c8691b1f2f42e398, type: 3}
+  m_Name: CharactersGenerationStorage
+  m_EditorClassIdentifier: Game::Assets.Code.StaticData.CharactersGenerationStorage
+  MaleFaces:
+  - {fileID: 21300000, guid: cd96cdd49a0cbd344aae7fc60de4f0da, type: 3}
+  - {fileID: 21300000, guid: 94074ad267c26ac4287c6a4579aad593, type: 3}
+  - {fileID: 21300000, guid: 5d053565d25ca44418b6b6d2fd16ff4f, type: 3}
+  - {fileID: 21300000, guid: c191ed831fdccde488510601f14dfa9f, type: 3}
+  - {fileID: 21300000, guid: ff96a53de6f2b1a4d8d19b485572b157, type: 3}
+  - {fileID: 21300000, guid: eee2ce984f67ed24f945a30507727013, type: 3}
+  - {fileID: 21300000, guid: 72c99cf451278404a94b906e5df3acc8, type: 3}
+  - {fileID: 21300000, guid: ddcb8c187bdbc0d44be6bad6c195f24c, type: 3}
+  - {fileID: 21300000, guid: 0976cdeed0530ee45800c6c817c91dab, type: 3}
+  - {fileID: 21300000, guid: 9a52644c54ca94e428a5207d46d4c7e3, type: 3}
+  - {fileID: 21300000, guid: 8783cf762b2d78e45b947db142764843, type: 3}
+  - {fileID: 21300000, guid: 4f1a0e3f3dc0c7349bcb7e5ae6276773, type: 3}
+  - {fileID: 21300000, guid: db3c3de31d0999240bdd0cf954c5106e, type: 3}
+  - {fileID: 21300000, guid: 42b66b4c3704698499e1fe62370670e8, type: 3}
+  - {fileID: 21300000, guid: 45c02c9088b7d4943939e4ad4d9a390c, type: 3}
+  - {fileID: 21300000, guid: e9fd6398270d1794383eadeaa761de67, type: 3}
+  - {fileID: 21300000, guid: d8d737190f1ea74409e02202134e1972, type: 3}
+  - {fileID: 21300000, guid: 91f1d9c1a3f784f41b279acec9032dc7, type: 3}
+  - {fileID: 21300000, guid: 5e4d089fa4785b549a1fdef8cea369d4, type: 3}
+  - {fileID: 21300000, guid: afc9816ae1471a5468316121c8799705, type: 3}
+  - {fileID: 21300000, guid: a673ac8a280897d4ab5f9f9fec0e884c, type: 3}
+  - {fileID: 21300000, guid: a320494b47f4bf646af0137c8176c19d, type: 3}
+  - {fileID: 21300000, guid: aae4780475fdd7642b0abc8da02f300e, type: 3}
+  - {fileID: 21300000, guid: 86ce3dc5439256645bbaeb844ba08b31, type: 3}
+  FemaleFaces:
+  - {fileID: 21300000, guid: 919ba308a343d6a41b430ec06aafc94a, type: 3}
+  - {fileID: 21300000, guid: 4a215d0198a4c1d42babfb574c6ffe88, type: 3}
+  - {fileID: 21300000, guid: a8d4dbdbcdaf50c4fb875082ffe7ccf9, type: 3}
+  - {fileID: 21300000, guid: 5fe2110f6fb2f814fa02c5f7e6d0d803, type: 3}
+  - {fileID: 21300000, guid: 09376a38b2200c04a9c89f77decfc5f2, type: 3}
+  - {fileID: 21300000, guid: c6130180eaeda6d478045e95daccb7a2, type: 3}
+  - {fileID: 21300000, guid: 066219e7430c863478aec52a88ce43c9, type: 3}
+  - {fileID: 21300000, guid: 2ad57e07e45fd344987e170287c29c24, type: 3}
+  - {fileID: 21300000, guid: 9e1c464d8c469fb4f93e61b20e19ac85, type: 3}
+  - {fileID: 21300000, guid: 621d23487008b5240bbd3557f9e01924, type: 3}
+  - {fileID: 21300000, guid: 8bac2bfc7f1ef5c4aa1f3edc8025dd94, type: 3}
+  - {fileID: 21300000, guid: bf5b14e18fd6e534dbc7eefe111b5ce4, type: 3}
+  - {fileID: 21300000, guid: 7cc3c0a13266bc342a3aa79d70bb8720, type: 3}
+  - {fileID: 21300000, guid: d04ce97b40c341d4db4bf7978adf6268, type: 3}
+  - {fileID: 21300000, guid: bebde4171129c7649a31de2cf43d8148, type: 3}
+  - {fileID: 21300000, guid: a1a28b22976fa944a8da4c9bc2faa8c5, type: 3}
+  - {fileID: 21300000, guid: d88e3d46e9d7f72479daab8846243c54, type: 3}
+  - {fileID: 21300000, guid: a659aeb475b20a44bb553a7dd8839bcd, type: 3}
+  - {fileID: 21300000, guid: efed06bd0dd9c79459ac011a4498e8e7, type: 3}
+  - {fileID: 21300000, guid: 43a2373d26b15404eb8105ad43ee6d32, type: 3}
+  - {fileID: 21300000, guid: d37fe2731c0c4f84fbcc239376c434b0, type: 3}
+  - {fileID: 21300000, guid: 9c09695aa39534742891ebd681a60e89, type: 3}
+  - {fileID: 21300000, guid: ab855a9466d09124d8340a84b3c0bdd5, type: 3}
+  _maleNames: "Glynn, Aram, Randle, Vince, Vince, Egan, Randolf, Lary, Claude, Benjie,
+    Lamon, Claire, Khalid, Albino, Dutch, Doron, Joshua, Talmage, Joey, Ariel, Kaleb,
+    Kolbe, Myles, Huy, Jonothan, Martin, Gilbert, Daniel, Stanislaus, Arnold, Aron,
+    Dominik, Milo, Ivan, Dario, Adam, Darris, Henrik, Bogdan, Igor, Nikola, Liam,
+    Noah, Oliver, James, Elijah, Mateo, Theodore, Henry, Lucas, William, Benjamin,
+    Levi, Sebastian, Jack, Ezra, Michael, Daniel, Leo, Owen, Samuel, Hudson, Alexander,
+    Asher, Luca, Ethan, Santiago, Mateo, Sebasti\xE1n, Leonardo, Mat\xEDas, Emiliano,
+    Diego, Miguel \xC1ngel, Daniel, Alexander, Alejandro, Jes\xFAs, Gael, \xC1ngel,
+    David, Luis, Jos\xE9, Fernando, Emmanuel, Maximiliano, Jos\xE9 Luis, Jos\xE9
+    Miguel, Jorge, Gabriel, Rafael, Lucas, Alexander, Oliver, Mohammed, Noah, Elias,
+    Matteo, Gabriel, Daniel, Liam, Benjamin, Ryan, Martin, David, Leo, Adam, Theodor,
+    Viktor, Jacob, Samuel, Sebastian, Aaron, Paul, Oscar, Thomas, William, Michael,
+    Joseph, Marc, Simon, Max, Henry, Julian, Anton, Oscar, Christian, Niklas, Frederik,
+    Jonas, Lukas, Emil, Erik, Arthur, Filip, Johan, Tobias, Hugo, Leo, Lorenzo."
+  <MaleNames>k__BackingField:
+  - Glynn
+  - Aram
+  - Randle
+  - Vince
+  - Vince
+  - Egan
+  - Randolf
+  - Lary
+  - Claude
+  - Benjie
+  - Lamon
+  - Claire
+  - Khalid
+  - Albino
+  - Dutch
+  - Doron
+  - Joshua
+  - Talmage
+  - Joey
+  - Ariel
+  - Kaleb
+  - Kolbe
+  - Myles
+  - Huy
+  - Jonothan
+  - Martin
+  - Gilbert
+  - Daniel
+  - Stanislaus
+  - Arnold
+  - Aron
+  - Dominik
+  - Milo
+  - Ivan
+  - Dario
+  - Adam
+  - Darris
+  - Henrik
+  - Bogdan
+  - Igor
+  - Nikola
+  - Liam
+  - Noah
+  - Oliver
+  - James
+  - Elijah
+  - Mateo
+  - Theodore
+  - Henry
+  - Lucas
+  - William
+  - Benjamin
+  - Levi
+  - Sebastian
+  - Jack
+  - Ezra
+  - Michael
+  - Daniel
+  - Leo
+  - Owen
+  - Samuel
+  - Hudson
+  - Alexander
+  - Asher
+  - Luca
+  - Ethan
+  - Santiago
+  - Mateo
+  - "Sebasti\xE1n"
+  - Leonardo
+  - "Mat\xEDas"
+  - Emiliano
+  - Diego
+  - "Miguel\xC1ngel"
+  - Daniel
+  - Alexander
+  - Alejandro
+  - "Jes\xFAs"
+  - Gael
+  - "\xC1ngel"
+  - David
+  - Luis
+  - "Jos\xE9"
+  - Fernando
+  - Emmanuel
+  - Maximiliano
+  - "Jos\xE9Luis"
+  - "Jos\xE9Miguel"
+  - Jorge
+  - Gabriel
+  - Rafael
+  - Lucas
+  - Alexander
+  - Oliver
+  - Mohammed
+  - Noah
+  - Elias
+  - Matteo
+  - Gabriel
+  - Daniel
+  - Liam
+  - Benjamin
+  - Ryan
+  - Martin
+  - David
+  - Leo
+  - Adam
+  - Theodor
+  - Viktor
+  - Jacob
+  - Samuel
+  - Sebastian
+  - Aaron
+  - Paul
+  - Oscar
+  - Thomas
+  - William
+  - Michael
+  - Joseph
+  - Marc
+  - Simon
+  - Max
+  - Henry
+  - Julian
+  - Anton
+  - Oscar
+  - Christian
+  - Niklas
+  - Frederik
+  - Jonas
+  - Lukas
+  - Emil
+  - Erik
+  - Arthur
+  - Filip
+  - Johan
+  - Tobias
+  - Hugo
+  - Leo
+  - Lorenzo.
+  _femaleNames: Domenique,Ekaterina,Maja,Mirka,Karla,Nika,Lorena,Mara,Klara,Lina,Magdalena,Margareta,Lana,Irena,Karmen,Mirna,Mira,Paula,Katarina,Alma,Marija,Elena,Vlasta,Veronika,Zoe,Domenique,Lana,Klara,Zora,Ana,Marija,Laura,Ekaterina,Ivana,Mirna,Vlasta,Sandra,Elena,Tanja,Veronika,Kate,Aleksandra,Lena,Vera,Hana,Renea,Mirka,Petra,Gissel,Kendall,Shyanne,Darian,Queenie,Joanie,Stephane,Carissa,Ita,Nikita,Cristiana,Brittan,Kailani,Deena,Penny,Colette,Mychaela,Lorina,Adeline,Minna,Alethia,Linda,Jesica,Meridith,Taunya,Svea,Abigayle,Nidhi,Denesha,Anastacia,Scarlette,Viviann,Kelia,Chantal,Arletha,Desirae,Deonne,Eugene,Marcela,Gizella,Molli,Ellen,Oriana,Kassandra,Kariann,Lisanne,Deniece,Ayelet
+  <FemaleNames>k__BackingField:
+  - Domenique
+  - Ekaterina
+  - Maja
+  - Mirka
+  - Karla
+  - Nika
+  - Lorena
+  - Mara
+  - Klara
+  - Lina
+  - Magdalena
+  - Margareta
+  - Lana
+  - Irena
+  - Karmen
+  - Mirna
+  - Mira
+  - Paula
+  - Katarina
+  - Alma
+  - Marija
+  - Elena
+  - Vlasta
+  - Veronika
+  - Zoe
+  - Domenique
+  - Lana
+  - Klara
+  - Zora
+  - Ana
+  - Marija
+  - Laura
+  - Ekaterina
+  - Ivana
+  - Mirna
+  - Vlasta
+  - Sandra
+  - Elena
+  - Tanja
+  - Veronika
+  - Kate
+  - Aleksandra
+  - Lena
+  - Vera
+  - Hana
+  - Renea
+  - Mirka
+  - Petra
+  - Gissel
+  - Kendall
+  - Shyanne
+  - Darian
+  - Queenie
+  - Joanie
+  - Stephane
+  - Carissa
+  - Ita
+  - Nikita
+  - Cristiana
+  - Brittan
+  - Kailani
+  - Deena
+  - Penny
+  - Colette
+  - Mychaela
+  - Lorina
+  - Adeline
+  - Minna
+  - Alethia
+  - Linda
+  - Jesica
+  - Meridith
+  - Taunya
+  - Svea
+  - Abigayle
+  - Nidhi
+  - Denesha
+  - Anastacia
+  - Scarlette
+  - Viviann
+  - Kelia
+  - Chantal
+  - Arletha
+  - Desirae
+  - Deonne
+  - Eugene
+  - Marcela
+  - Gizella
+  - Molli
+  - Ellen
+  - Oriana
+  - Kassandra
+  - Kariann
+  - Lisanne
+  - Deniece
+  - Ayelet
+  _lastNames: 'Diab,Shamoun,Aly,Hassen,Bitar,Huda,Chahine,Sarwar,Kamel,Sleiman,Masih,Shahid,Amari,Khalil,Sultana,Raad,Samara,Daoud,Basha,Jabour,Antar,Irani,Tuma,Salib,Gregorian,Stepanian,Abrahamian,Tavitian,Kazarian,Mouradian,Mardirosian,Kaloustian,Karapetyan,Boghosian,Krikorian,Ohanesian,Petrossian,Kazanjian,Donabedian,Artinian,Terzian,Babayan,Nazarian,Oganesyan,Topalian,Hakimian,Manoukian,Arslanian,
+    Roman,Primack,Petrowski,Yurkovich,Sadowski,Krasinski,Kazan,Glinka,Wolsky,Holub,Lach,Kravec,Minsky,Romanowski,Shimko,Kravets,Moroz,Krupski,Daman,Kozel,Kozuch,Ivanoff,Slutsky,Kovalik,
+    Hornbrook,Horwood,Hayhurst,Goodyear,Cattell,Bickley,Prestwood,Olwell,Winkle,Gascoyne,Yearby,Bales,Matley,Hey,Wynder,Plante,Bickham,Hankey,Gelder,Henshall,Adney,Darnall,Latimore,Towsley,
+    Merrill,Merrifield,Hunkins,Everest,Wyers,Cockrell,Pendergast,Milburn,Mosely,Guye,Annand,Maunder,Burchett,Mimms,Jewison,Cripps,Anstey,Fenwick,Bransford,Carras,Manville,Monks,Hayter,Burbidge,
+    Furlow,Monk,Gaynor,Redfern,Hilderbrand,Winham,Tappe,Jacks,Amond,Florence,Sutton,Sanger,Sterman,Shafto,Yeaw,Curvin,Parkin,Truitt,Broman,Haight,Hawke,Bathurst,Elvington,Dockham, '
+  <LastNames>k__BackingField:
+  - Diab
+  - Shamoun
+  - Aly
+  - Hassen
+  - Bitar
+  - Huda
+  - Chahine
+  - Sarwar
+  - Kamel
+  - Sleiman
+  - Masih
+  - Shahid
+  - Amari
+  - Khalil
+  - Sultana
+  - Raad
+  - Samara
+  - Daoud
+  - Basha
+  - Jabour
+  - Antar
+  - Irani
+  - Tuma
+  - Salib
+  - Gregorian
+  - Stepanian
+  - Abrahamian
+  - Tavitian
+  - Kazarian
+  - Mouradian
+  - Mardirosian
+  - Kaloustian
+  - Karapetyan
+  - Boghosian
+  - Krikorian
+  - Ohanesian
+  - Petrossian
+  - Kazanjian
+  - Donabedian
+  - Artinian
+  - Terzian
+  - Babayan
+  - Nazarian
+  - Oganesyan
+  - Topalian
+  - Hakimian
+  - Manoukian
+  - Arslanian
+  - ' Roman'
+  - Primack
+  - Petrowski
+  - Yurkovich
+  - Sadowski
+  - Krasinski
+  - Kazan
+  - Glinka
+  - Wolsky
+  - Holub
+  - Lach
+  - Kravec
+  - Minsky
+  - Romanowski
+  - Shimko
+  - Kravets
+  - Moroz
+  - Krupski
+  - Daman
+  - Kozel
+  - Kozuch
+  - Ivanoff
+  - Slutsky
+  - Kovalik
+  - ' Hornbrook'
+  - Horwood
+  - Hayhurst
+  - Goodyear
+  - Cattell
+  - Bickley
+  - Prestwood
+  - Olwell
+  - Winkle
+  - Gascoyne
+  - Yearby
+  - Bales
+  - Matley
+  - Hey
+  - Wynder
+  - Plante
+  - Bickham
+  - Hankey
+  - Gelder
+  - Henshall
+  - Adney
+  - Darnall
+  - Latimore
+  - Towsley
+  - ' Merrill'
+  - Merrifield
+  - Hunkins
+  - Everest
+  - Wyers
+  - Cockrell
+  - Pendergast
+  - Milburn
+  - Mosely
+  - Guye
+  - Annand
+  - Maunder
+  - Burchett
+  - Mimms
+  - Jewison
+  - Cripps
+  - Anstey
+  - Fenwick
+  - Bransford
+  - Carras
+  - Manville
+  - Monks
+  - Hayter
+  - Burbidge
+  - ' Furlow'
+  - Monk
+  - Gaynor
+  - Redfern
+  - Hilderbrand
+  - Winham
+  - Tappe
+  - Jacks
+  - Amond
+  - Florence
+  - Sutton
+  - Sanger
+  - Sterman
+  - Shafto
+  - Yeaw
+  - Curvin
+  - Parkin
+  - Truitt
+  - Broman
+  - Haight
+  - Hawke
+  - Bathurst
+  - Elvington
+  - Dockham
+  - ' '
