@@ -9,6 +9,6 @@ namespace Assets.Code.Common
 {
     public static class GameConstants
     {
-
+        
     }
 }

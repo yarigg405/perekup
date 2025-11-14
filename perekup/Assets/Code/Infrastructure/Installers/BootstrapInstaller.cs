@@ -1,4 +1,5 @@
-﻿using Assets.Code.Common.Time;
+﻿using Assets.Code.Characters;
+using Assets.Code.Common.Time;
 using Assets.Code.Infrastructure.DI;
 using Assets.Code.Infrastructure.EntryPoints;
 using Assets.Code.Infrastructure.Loading;
@@ -6,6 +7,7 @@ using Assets.Code.Infrastructure.SaveLoad;
 using Assets.Code.Infrastructure.SaveLoad.Infrastructure;
 using Assets.Code.Infrastructure.States.GameStates;
 using Assets.Code.Infrastructure.States.StateMachine;
+using Assets.Code.Market;
 using VContainer;
 using VContainer.Unity;
 
@@ -61,6 +63,9 @@ namespace Assets.Code.Infrastructure.Installers
 
         private void RegisterFactories()
         {
+            Builder.Register<CharacterFactory>(Lifetime.Singleton).AsSelf();
+            Builder.Register<CarOrderGenerator>(Lifetime.Singleton).AsSelf();
+
         }
 
         private void RegisterEntryPoint()

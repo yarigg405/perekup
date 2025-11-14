@@ -97,6 +97,10 @@ namespace Yrr.Utils
             return enumerable.Any() ? enumerable.ElementAt(Random.Range(0, enumerable.Length)) : default;
         }
 
+        public static int GetRandomIndex<T>(this IEnumerable<T> list)
+        {
+            return Random.Range(0, list.Count());
+        }
         #endregion
 
 

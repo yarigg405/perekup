@@ -9,5 +9,14 @@ namespace Assets.Code.Characters
         public int[] Stats = new int[6];
         public string VisualName;
         public string Guid;
+        public CharacterGender Gender;
+        public int IconIndex;
+    }
+
+    [Serializable]
+    public enum CharacterGender
+    {
+        Male,
+        Female,
     }
 }
