@@ -1,151 +1,119 @@
-using System;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Yrr.UI;
+using Yrr.UI.Infrastructure;
 
 
-namespace Yrr.UI
+namespace Assets.Yrr.UI.UI_System
 {
-    public sealed class UIManager : MonoBehaviour
+    public sealed class UIManager : IUIManager
     {
-        public event Action<IUIScreen> OnScreenShown;
-        public event Action<IUIScreen> OnScreenHided;
-        public event Action<IUIScreen> OnModalShown;
+        private IScreenSupplier<Type> _supplier;
 
-        private ScreenStorage _screenStorage;
-        private ScreenManager _screenManager;
-
-
-        private void Start()
+        public UIManager(ScreensSupplier supplier)
         {
-            _screenStorage = new ScreenStorage();
-            _screenManager = new ScreenManager(_screenStorage);
+            _supplier = supplier;
+        }
 
-            _screenManager.OnScreenShown += OpenScreenEvent;
-            _screenManager.OnScreenHided += HideScreenEvent;
-            _screenManager.OnModalShown += OpenModalEvent;
+        public event Action<IUIScreen> OnScreenOpen;
+        public event Action<IUIScreen> OnScreenHide;
+
+        private IUiSimpleScreen _currentScreen;
+        private Stack<IUiSimpleScreen> _screensHistory = new();
+        private Queue<IUIScreen> _queuedModals = new();
 
 
-            var windows = transform.GetComponentsInChildren<UIScreen>(true);
-
-            foreach (var screen in windows)
+        public void Show<TScreen>(Action closingCallback = null) where TScreen : UIScreen
+        {
+            var screen = _supplier.GetScreen<TScreen>() as IUiSimpleScreen;
+            if (screen.IsModal)
             {
-                _screenStorage.AddScreen(screen.GetType(), screen);
-                screen.Hide();
-                screen.OnHideAction += HideScreenEvent;
+                OpenModal(screen, closingCallback);
             }
 
-            GoToScreen(windows[0]);
+            else
+            {
+                ChangeWindow(screen, closingCallback);
+                if (screen is MainScreen)
+                    ClearHistory();
+            }
         }
 
-        private void OpenModalEvent(IUIScreen screen)
+        public void Show<TScreen, TPayload>(TPayload payload, Action closingCallback = null) where TScreen : UIScreenPayload<TPayload>
         {
-            OnModalShown?.Invoke(screen);
+            var screen = _supplier.GetScreen<TScreen>() as IPayloadScreen<TPayload>;
+            OpenModal(screen, payload, closingCallback);
+
+            //cant do payload screen not modal, because screens history (cant  history payload)
         }
 
-        private void HideScreenEvent(IUIScreen screen)
+        public void Hide<TScreen>() where TScreen : IUIScreen
         {
-            OnScreenHided?.Invoke(screen);
+            var screen = _supplier.GetScreen<TScreen>();
+            HideInternal(screen);
         }
 
-        private void OpenScreenEvent(IUIScreen screen)
+        void IUIManager.Hide(IUIScreen screen)
         {
-            OnScreenShown?.Invoke(screen);
+            HideInternal(screen);
         }
 
-        public T GetScreen<T>() where T : IUIScreen
+        private void ChangeWindow(IUiSimpleScreen screen, Action callback)
         {
-            return (T) _screenStorage.GetScreen(typeof(T));
+            CloseCurrent();
+            _currentScreen = screen;
+            screen.Show(callback);
         }
 
-
-        #region Open screens methods
-
-        public void GoToScreen(UIScreen screen)
+        private void OpenModal(IUiSimpleScreen screen, Action callback)
         {
-            _screenManager.ChangeScreen(screen.GetType(), null, null);
+            screen.Show(callback);
         }
 
-
-        public bool GoToScreen(Type key, object args = null)
+        private void OpenModal<TPayload>(IPayloadScreen<TPayload> screen, TPayload payload, Action callback)
         {
-            _screenManager.ChangeScreen(key, args, null);
-            return true;
+            screen.Show(payload, callback);
         }
 
-        public bool GoToScreen(Type key, object args, Action callback)
+        private void CloseCurrent()
         {
-            _screenManager.ChangeScreen(key, args, callback);
-            return true;
+            if (_currentScreen != null)
+            {
+                _screensHistory.Push(_currentScreen);
+                _currentScreen.Hide();
+                OnScreenHide?.Invoke(_currentScreen);
+            }
         }
 
-        public bool GoToScreen(Type key, Action callback)
+        private void HideInternal(IUIScreen uIScreen)
         {
-            _screenManager.ChangeScreen(key, null, callback);
-            return true;
+            if (uIScreen.IsModal)
+            {
+                uIScreen.Hide();
+            }
+
+            else
+            {
+                if (_currentScreen is IUiSimpleScreen simplescreen)
+                {
+                    _currentScreen.Hide();
+                    OnScreenHide?.Invoke(_currentScreen);
+
+                    _currentScreen = _screensHistory.Pop();
+                    _currentScreen.Show(null);
+                }
+
+                else
+                {
+                    uIScreen.Hide();
+                    //cant do payload screen not modal, because screens history (cant  history payload)
+                }
+            }
         }
 
-
-        public bool GoToScreen<T>(object args = null)
+        private void ClearHistory()
         {
-            return GoToScreen(typeof(T), args);
+            _screensHistory.Clear();
         }
-
-        public bool GoToScreen<T>(Action callback)
-        {
-            return GoToScreen(typeof(T), callback);
-        }
-
-        public bool GoToScreen<T>(object args, Action callback)
-        {
-            return GoToScreen(typeof(T), args, callback);
-        }
-
-        #endregion
-
-
-        #region Open modal methods
-
-        public void OpenModal(UIScreen screen)
-        {
-            _screenManager.ShowModal(screen.GetType(), null, null);
-        }
-
-
-
-        public bool OpenModal(Type key, object args = null)
-        {
-            _screenManager.ShowModal(key, args, null);
-            return true;
-        }
-
-        public bool OpenModal(Type key, Action callback)
-        {
-            _screenManager.ShowModal(key, null, callback);
-            return true;
-        }
-
-        public bool OpenModal(Type key, object args, Action callback)
-        {
-            _screenManager.ShowModal(key, args, callback);
-            return true;
-        }
-
-
-
-        public bool OpenModal<T>(object args = null)
-        {
-            return OpenModal(typeof(T), args);
-        }
-
-        public bool OpenModal<T>(Action callback)
-        {
-            return OpenModal(typeof(T), callback);
-        }
-
-        public bool OpenModal<T>(object args, Action callback)
-        {
-            return OpenModal(typeof(T), args, callback);
-        }
-
-        #endregion       
     }
 }
