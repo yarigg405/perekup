@@ -30,7 +30,7 @@ namespace Yrr.Audio
             {
                 if (_listener == null || !_listener.isActiveAndEnabled)
                 {
-                    _listener = FindObjectOfType<AudioListener>();
+                    _listener = FindAnyObjectByType<AudioListener>();
                 }
                 return _listener;
             }

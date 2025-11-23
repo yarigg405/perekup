@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
-using UnityEngine;
 using System.Linq;
 using System.Text;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 namespace Yrr.Utils
 {
+    /// Version 0.8.3
     public static class Extensions
     {
         public static void ClearChildren(this Transform transform)
@@ -17,7 +20,7 @@ namespace Yrr.Utils
             {
                 var child = transform.GetChild(i);
                 child.SetParent(null);
-                Object.Destroy(child.gameObject);
+                GameObject.Destroy(child.gameObject);
             }
         }
 
@@ -76,6 +79,56 @@ namespace Yrr.Utils
             return new Vector3(vector.x, vector.z, vector.y);
         }
 
+        public static Vector3 ToVector3(this Vector2 vector, float y = 0)
+        {
+            return new Vector3(vector.x, y, vector.y);
+        }
+
+        #endregion
+
+
+        #region Angles
+        public static float GetAngleDirectionY(Vector3 fromPosition, Vector3 toPosition)
+        {
+            Vector3 direction = toPosition - fromPosition;
+            float angleRad = Mathf.Atan2(direction.x, direction.z);
+            float angleDeg = angleRad * Mathf.Rad2Deg;
+            return NormalizeAngle(angleDeg);
+        }
+
+        public static float GetAngleDirectionY(Vector3 direction)
+        {
+            float angleRad = Mathf.Atan2(direction.x, direction.z);
+            float angleDeg = angleRad * Mathf.Rad2Deg;
+            return NormalizeAngle(angleDeg);
+        }
+
+        public static float GetAngleDirectionY(Vector2 direction)
+        {
+            float angleRad = Mathf.Atan2(direction.x, direction.y);
+            float angleDeg = angleRad * Mathf.Rad2Deg;
+            return NormalizeAngle(angleDeg);
+        }
+
+        public static float GetMinAngledDelta(float angle1, float angle2)
+        {
+            float diff = Mathf.Abs(angle1 - angle2);
+            return Mathf.Min(diff, 360 - diff);
+        }
+
+        public static float NormalizeAngle(float angle)
+        {
+            while (angle >= 360f) angle -= 360f;
+            while (angle < 0f) angle += 360f;
+            return angle;
+        }
+
+        public static float MoveTowardsAngle(this float currentAngle, float targetAngle, float maxDeltaRotation)
+        {
+            var diff = Mathf.DeltaAngle(currentAngle, targetAngle);
+            var move = Mathf.Clamp(diff, -maxDeltaRotation, maxDeltaRotation);
+            return NormalizeAngle(currentAngle + move);
+        }
         #endregion
 
 
@@ -101,6 +154,7 @@ namespace Yrr.Utils
         {
             return Random.Range(0, list.Count());
         }
+
         #endregion
 
 
@@ -126,6 +180,52 @@ namespace Yrr.Utils
             var tmp = first.Value;
             first.Value = second.Value;
             second.Value = tmp;
+        }
+
+        public static T FindMin<T, TComp>(this IEnumerable<T> enumerable, Func<T, TComp> selector)
+            where TComp : IComparable<TComp>
+        {
+            return Find(enumerable, selector, true);
+        }
+
+        public static T FindMax<T, TComp>(this IEnumerable<T> enumerable, Func<T, TComp> selector)
+            where TComp : IComparable<TComp>
+        {
+            return Find(enumerable, selector, false);
+        }
+
+        private static T Find<T, TComp>(IEnumerable<T> enumerable, Func<T, TComp> selector, bool selectMin) where TComp : IComparable<TComp>
+        {
+            if (enumerable == null)
+                return default;
+
+            var first = true;
+            T selected = default(T);
+            TComp selectedComp = default(TComp);
+
+            foreach (T current in enumerable)
+            {
+                TComp comp = selector(current);
+                if (first)
+                {
+                    first = false;
+                    selected = current;
+                    selectedComp = comp;
+                    continue;
+                }
+
+                int res = selectMin
+                  ? comp.CompareTo(selectedComp)
+                  : selectedComp.CompareTo(comp);
+
+                if (res < 0)
+                {
+                    selected = current;
+                    selectedComp = comp;
+                }
+            }
+
+            return selected;
         }
         #endregion
 

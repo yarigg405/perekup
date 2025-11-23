@@ -13,7 +13,7 @@ namespace Yrr.Utils
             {               
                 if (_instance == null)
                 {
-                    _instance = FindObjectOfType<T>();
+                    _instance = FindAnyObjectByType<T>();
 
                     if (_instance == null)
                     {

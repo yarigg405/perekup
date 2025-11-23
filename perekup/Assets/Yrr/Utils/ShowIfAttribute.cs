@@ -78,7 +78,6 @@ namespace Yrr.Utils
                 else
                     return -EditorGUIUtility.standardVerticalSpacing; // Oculta el campo visualmente.
             }
-            return 0f;
         }
 
         /// <summary>
