@@ -1,5 +1,4 @@
 ﻿using Assets.Code.StaticData;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Yrr.Utils;
@@ -36,7 +35,7 @@ namespace Assets.Code.Characters
 
             character.Stats = stats;
             character.VisualName = name;
-            character.Guid = Guid.NewGuid().ToString();
+            character.Guid = System.Guid.NewGuid().ToString();
             character.Gender = gender;
             character.IconIndex = iconIndex;
 
