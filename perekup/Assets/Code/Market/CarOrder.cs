@@ -8,6 +8,7 @@ namespace Assets.Code.Market
     [Serializable]
     public sealed class CarOrder
     {
+        public string OrderGuid { get; set; }
         public ulong Price { get; set; }
         public CarStats Stats { get; set; }
         public Character Seller { get; set; }

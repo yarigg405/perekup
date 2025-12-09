@@ -8,6 +8,7 @@ using Assets.Code.Infrastructure.SaveLoad.Infrastructure;
 using Assets.Code.Infrastructure.States.GameStates;
 using Assets.Code.Infrastructure.States.StateMachine;
 using Assets.Code.Market;
+using Assets.Code.StaticData;
 using VContainer;
 using VContainer.Unity;
 
@@ -18,7 +19,6 @@ namespace Assets.Code.Infrastructure.Installers
     {
         protected override void Install()
         {
-            RegisterStaticData();
             RegisterInfrastructureServices();
             RegisterPlayerServices();
             RegisterSaveLoaders();
@@ -26,11 +26,6 @@ namespace Assets.Code.Infrastructure.Installers
             RegisterFactories();
 
             RegisterEntryPoint();
-        }
-
-        private void RegisterStaticData()
-        {
-
         }
 
         private void RegisterInfrastructureServices()

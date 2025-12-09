@@ -1,0 +1,32 @@
+﻿using System;
+
+
+namespace Assets.Code.UI.Infrastructure
+{
+    public class UIManager
+    {
+        public event Action<IScreen> OnScreenOpened;
+        public event Action<IScreen> OnScreenClosed;
+
+        private readonly ScreensProvider _screensProvider;
+
+        public UIManager(ScreensProvider screensProvider)
+        {
+            _screensProvider = screensProvider;
+        }
+
+        public void OpenScreen<TScreen>(object args = null) where TScreen : IScreen
+        {
+            var screen = _screensProvider.GetScreen<TScreen>();
+            screen.Show(args);
+            OnScreenOpened?.Invoke(screen);
+        }
+
+        public void CloseScreen<TScreen>() where TScreen : IScreen
+        {
+            var screen = _screensProvider.GetScreen<TScreen>();
+            screen.Hide();
+            OnScreenClosed?.Invoke(screen);
+        }
+    }
+}

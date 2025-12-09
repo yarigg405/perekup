@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5274641923923970632}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -105,7 +104,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5274641923993947639}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -142,7 +140,6 @@ RectTransform:
   m_Children:
   - {fileID: 5274641923365240438}
   m_Father: {fileID: 5274641923993947639}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -183,7 +180,6 @@ RectTransform:
   - {fileID: 5274641923923970632}
   - {fileID: 5274641923629256354}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -253,9 +249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae63eabc80b4c14eaa73994443d7e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 5274641923993947625}
-  onlyIncrement: 0
-  speedModifier: 1
+  _slider: {fileID: 5274641923993947625}
+  _onlyIncrement: 0
+  _speedModifier: 1
   OnSliderMoveUp:
     m_PersistentCalls:
       m_Calls: []
@@ -299,7 +295,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5274641923993947639}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

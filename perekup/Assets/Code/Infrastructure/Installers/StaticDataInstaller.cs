@@ -1,5 +1,6 @@
 ﻿using Assets.Code.Cars;
 using Assets.Code.Infrastructure.DI;
+using Assets.Code.Market;
 using Assets.Code.StaticData;
 using UnityEngine;
 using VContainer;
@@ -18,6 +19,7 @@ namespace Assets.Code.Infrastructure.Installers
             Builder.RegisterInstance(_charactersGenerationStorage).AsSelf();
             Builder.Register<StaticDataService>(Lifetime.Singleton).AsSelf()
                 .WithParameter(_carConfigs);
+            Builder.Register<CarMarketService>(Lifetime.Singleton).AsSelf();
         }
     }
 }
