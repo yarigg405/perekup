@@ -4,7 +4,7 @@ using UnityEngine;
 using Yrr.Utils;
 
 
-namespace Assets.Code.UI.Screens.MarketScreen
+namespace Assets.Code.UI.Screens
 {
     public readonly struct CarOrderCardDTO
     {
@@ -19,7 +19,7 @@ namespace Assets.Code.UI.Screens.MarketScreen
             var config = staticData.GetCar(order.Stats.CarId);
 
             CarIcon = config.CarIcon;
-            CarDescription = $"{config.CarBrandName} {config.CarModelName} ({config.Year})";
+            CarDescription = config.GetDescription();
             CarCondition = CalculateStatsValue(order);
             OrderPrice = order.Price.ToShortMoneyString();
             OrderGuid = order.OrderGuid;

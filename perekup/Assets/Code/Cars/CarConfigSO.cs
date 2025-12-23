@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -15,6 +16,10 @@ namespace Assets.Code.Cars
 
         [field: SerializeField] public string VisualName { get; private set; }
 
+        public string GetDescription()
+        {
+          return  $"{CarBrandName} {CarModelName} ({Year})";
+        }
 
         private void OnValidate()
         {

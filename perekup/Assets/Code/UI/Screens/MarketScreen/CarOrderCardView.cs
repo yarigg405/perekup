@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Yrr.UI.Elements;
 
 
-namespace Assets.Code.UI.Screens.MarketScreen
+namespace Assets.Code.UI.Screens
 {
     public sealed class CarOrderCardView : MonoBehaviour
     {
@@ -17,12 +17,7 @@ namespace Assets.Code.UI.Screens.MarketScreen
 
         private Action _onButtonClicked;
 
-        private void OnEnable()
-        {
-            _openOrderButton.onClick.AddListener(HandleButtonClicked);
-        }
-
-        private void OnDisable()
+        private void OnDestroy()
         {
             _openOrderButton.onClick.RemoveListener(HandleButtonClicked);
         }
@@ -36,6 +31,7 @@ namespace Assets.Code.UI.Screens.MarketScreen
             _carPrice.text = model.OrderPrice;
 
             _onButtonClicked = onButtonClicked;
+            _openOrderButton.onClick.AddListener(HandleButtonClicked);
         }
 
         private void HandleButtonClicked()

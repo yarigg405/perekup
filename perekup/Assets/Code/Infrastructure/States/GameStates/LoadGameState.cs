@@ -2,7 +2,7 @@
 using Assets.Code.Infrastructure.States.StateMachine;
 using Assets.Code.Infrastructure.States.StatesInfrastructure;
 using Assets.Code.UI.Infrastructure;
-using Assets.Code.UI.Screens.MarketScreen;
+using Assets.Code.UI.Screens;
 
 
 namespace Assets.Code.Infrastructure.States.GameStates

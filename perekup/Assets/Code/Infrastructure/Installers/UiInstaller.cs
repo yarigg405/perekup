@@ -1,7 +1,7 @@
 ﻿using Assets.Code.Infrastructure.DI;
 using Assets.Code.UI.Infrastructure;
 using Assets.Code.UI.LoadingScreens;
-using Assets.Code.UI.Screens.MarketScreen;
+using Assets.Code.UI.Screens;
 using UnityEngine;
 using VContainer;
 
@@ -31,8 +31,11 @@ namespace Assets.Code.Infrastructure.Installers
 
         private void RegisterScreens()
         {
-            Builder.Register<MarketScreen>(Lifetime.Transient);
+            Builder.Register<MarketScreen>(Lifetime.Singleton);
             Builder.Register<MarketScreenPresenter>(Lifetime.Singleton);
+
+            Builder.Register<MarketOrderDetailPopup>(Lifetime.Singleton);
+            Builder.Register<MarkerOrderDetailPopupPresenter>(Lifetime.Singleton);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Assets.Code.StaticData;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Yrr.Utils;
 
@@ -49,6 +50,11 @@ namespace Assets.Code.Market
         public IEnumerable<CarOrder> GetCurrentOrders()
         {
             return _tempOrders;
+        }
+
+        public CarOrder GetOrder(string orderGuid)
+        {
+            return _tempOrders.First(x=>x.OrderGuid == orderGuid);
         }
     }
 }

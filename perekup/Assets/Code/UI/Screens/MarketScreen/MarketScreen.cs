@@ -1,9 +1,8 @@
-﻿using Assets.Code.Market;
-using Assets.Code.UI.Infrastructure;
+﻿using Assets.Code.UI.Infrastructure;
 using VContainer;
 
 
-namespace Assets.Code.UI.Screens.MarketScreen
+namespace Assets.Code.UI.Screens
 {
     public sealed class MarketScreen : IScreen
     {        
@@ -32,7 +31,7 @@ namespace Assets.Code.UI.Screens.MarketScreen
 
         void IScreen.Hide()
         {
-            
+            _presenter.Hide();
         }
     }
 }
