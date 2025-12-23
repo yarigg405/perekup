@@ -8,9 +8,9 @@ namespace Assets.Code.UI.Infrastructure
         public event Action<IScreen> OnScreenOpened;
         public event Action<IScreen> OnScreenClosed;
 
-        private readonly ScreensProvider _screensProvider;
+        private readonly IScreensProvider _screensProvider;
 
-        public UIManager(ScreensProvider screensProvider)
+        public UIManager(IScreensProvider screensProvider)
         {
             _screensProvider = screensProvider;
         }

@@ -3,7 +3,7 @@
 
 namespace Assets.Code.UI.Infrastructure
 {
-    public sealed class ScreensProvider
+    public sealed class ScreensProvider : IScreensProvider
     {
         private readonly IObjectResolver _objectResolver;
 

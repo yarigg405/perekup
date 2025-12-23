@@ -1,35 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using VContainer;
 
 
 namespace Assets.Code.UI.Infrastructure
 {
-    public sealed class ScreenViewsProvider
+    public sealed class ScreenViewsProvider : IScreenViewsProvider
     {
-        private readonly Dictionary<Type, UIScreenView> _cachedViews = new();
-
         private const string _prefabsPath = "UI/Screens/";
+        private readonly Dictionary<Type, UIScreenView> _prefabs = new();
+        private readonly Dictionary<Type, UIScreenView> _cachedScreens = new();
+
+        public ScreenViewsProvider()
+        {
+            var allPrefabs = Resources.LoadAll<UIScreenView>(_prefabsPath);
+            foreach (var prefab in allPrefabs)
+            {
+                var type = prefab.GetType();
+                _prefabs.Add(type, prefab);
+            }
+        }
 
         public TView GetView<TView>() where TView : UIScreenView
         {
             var type = typeof(TView);
-            if (!_cachedViews.ContainsKey(type) || _cachedViews[type] == null)
-            {
-                _cachedViews[type] = CreateView<TView>();
-            }
+            if (!ScreenIsCached(type))
+                _cachedScreens[type] = CreateScreen<TView>();
 
-            return (TView)_cachedViews[type];
+            return _cachedScreens[type] as TView;
         }
 
-        private UIScreenView CreateView<TView>() where TView : UIScreenView
+        private bool ScreenIsCached(Type screenType)
+        {
+            if (!_cachedScreens.ContainsKey(screenType))
+                return false;
+            if (_cachedScreens[screenType] == null) return false;
+
+            return true;
+        }
+
+        private UIScreenView CreateScreen<TView>() where TView : UIScreenView
         {
             var type = typeof(TView);
-            var prefab = Resources.Load<TView>(_prefabsPath + type.Name);
-            var instance = GameObject.Instantiate(prefab);
-
-            return instance;
+            var prefab = (TView)_prefabs[type];
+            return GameObject.Instantiate(prefab);
         }
     }
 }

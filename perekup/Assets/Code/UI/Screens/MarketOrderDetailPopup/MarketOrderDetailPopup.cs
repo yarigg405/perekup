@@ -7,18 +7,18 @@ namespace Assets.Code.UI.Screens
 {
     public sealed class MarketOrderDetailPopup : IScreen
     {
-        private readonly ScreenViewsProvider _viewsProvider;
+        private readonly IScreenViewsProvider _viewsProvider;
         private readonly LayerUI_Popups _screenRoot;
-        private readonly IObjectResolver _objectResolver;
 
-        private MarkerOrderDetailPopupPresenter _presenter;
+        private readonly MarkerOrderDetailPopupPresenter _presenter;
 
-        public MarketOrderDetailPopup(IObjectResolver objectResolver, 
-            LayerUI_Popups screenRoot, ScreenViewsProvider viewsProvider)
+        public MarketOrderDetailPopup(IObjectResolver objectResolver,
+            LayerUI_Popups screenRoot, IScreenViewsProvider viewsProvider)
         {
-            _objectResolver = objectResolver;
             _screenRoot = screenRoot;
             _viewsProvider = viewsProvider;
+
+            _presenter = new(objectResolver);
         }
 
         void IScreen.Show(object args)
@@ -27,7 +27,6 @@ namespace Assets.Code.UI.Screens
             view.transform.SetParent(_screenRoot.transform);
 
             var order = (CarOrder)args;
-            _presenter = _objectResolver.Resolve<MarkerOrderDetailPopupPresenter>();
             _presenter.Show(view, order);
         }
 

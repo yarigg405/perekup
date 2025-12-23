@@ -1,7 +1,7 @@
 ﻿using Assets.Code.Market;
 using Assets.Code.StaticData;
 using Assets.Code.UI.Infrastructure;
-using System;
+using VContainer;
 
 
 namespace Assets.Code.UI.Screens
@@ -11,10 +11,10 @@ namespace Assets.Code.UI.Screens
         private readonly StaticDataService _staticData;
         private readonly UIManager _uIManager;
 
-        public MarkerOrderDetailPopupPresenter(StaticDataService staticData, UIManager uIManager)
+        public MarkerOrderDetailPopupPresenter(IObjectResolver resolver)
         {
-            _staticData = staticData;
-            _uIManager = uIManager;
+            _staticData = resolver.Resolve<StaticDataService>();
+            _uIManager = resolver.Resolve<UIManager>();
         }
 
         private MarketOrderDetailPopupView _view;

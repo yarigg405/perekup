@@ -2,6 +2,7 @@
 using Assets.Code.StaticData;
 using Assets.Code.UI.Infrastructure;
 using System.Linq;
+using VContainer;
 
 
 namespace Assets.Code.UI.Screens
@@ -14,11 +15,11 @@ namespace Assets.Code.UI.Screens
 
         private MarketScreenView _view;
 
-        public MarketScreenPresenter(CarMarketService service, StaticDataService staticData, UIManager uiManager)
+        public MarketScreenPresenter(IObjectResolver resolver)
         {
-            _service = service;
-            _staticData = staticData;
-            _uiManager = uiManager;
+            _service = resolver.Resolve<CarMarketService>();
+            _staticData = resolver.Resolve<StaticDataService>();
+            _uiManager = resolver.Resolve<UIManager>();
         }
 
         public void Show(MarketScreenView view)

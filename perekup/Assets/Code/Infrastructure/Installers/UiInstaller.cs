@@ -22,8 +22,8 @@ namespace Assets.Code.Infrastructure.Installers
             Builder.RegisterInstance(_layerOverlay).AsSelf();
             Builder.RegisterInstance(_layerPopups).AsSelf();
 
-            Builder.Register<ScreensProvider>(Lifetime.Transient);
-            Builder.Register<ScreenViewsProvider>(Lifetime.Singleton);
+            Builder.Register<ScreensProvider>(Lifetime.Transient).AsImplementedInterfaces();
+            Builder.Register<ScreenViewsProvider>(Lifetime.Singleton).AsImplementedInterfaces();
             Builder.Register<UIManager>(Lifetime.Singleton);
 
             RegisterScreens();
@@ -32,10 +32,7 @@ namespace Assets.Code.Infrastructure.Installers
         private void RegisterScreens()
         {
             Builder.Register<MarketScreen>(Lifetime.Singleton);
-            Builder.Register<MarketScreenPresenter>(Lifetime.Singleton);
-
             Builder.Register<MarketOrderDetailPopup>(Lifetime.Singleton);
-            Builder.Register<MarkerOrderDetailPopupPresenter>(Lifetime.Singleton);
         }
     }
 }
