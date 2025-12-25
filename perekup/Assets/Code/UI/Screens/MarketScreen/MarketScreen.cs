@@ -8,16 +8,14 @@ namespace Assets.Code.UI.Screens
     {
         private readonly IScreenViewsProvider _viewsProvider;
         private readonly LayerUI_Screens _screenRoot;
-
         private readonly MarketScreenPresenter _presenter;
 
         public MarketScreen(IScreenViewsProvider viewsProvider, LayerUI_Screens screenRoot,
-            IObjectResolver objectResolver)
+            IObjectResolver objectResolver, MarketScreenPresenter presenter)
         {
             _viewsProvider = viewsProvider;
             _screenRoot = screenRoot;
-
-            _presenter = new(objectResolver);
+            _presenter = presenter;
         }
 
         void IScreen.Show(object args)

@@ -1,7 +1,7 @@
-﻿using Assets.Code.Market;
+﻿using Assets.Code.Gameplay;
+using Assets.Code.Market;
 using Assets.Code.StaticData;
 using Assets.Code.UI.Infrastructure;
-using VContainer;
 
 
 namespace Assets.Code.UI.Screens
@@ -10,15 +10,18 @@ namespace Assets.Code.UI.Screens
     {
         private readonly StaticDataService _staticData;
         private readonly UIManager _uIManager;
-
-        public MarkerOrderDetailPopupPresenter(IObjectResolver resolver)
-        {
-            _staticData = resolver.Resolve<StaticDataService>();
-            _uIManager = resolver.Resolve<UIManager>();
-        }
+        private readonly CarInspectionService _inspectionService;
 
         private MarketOrderDetailPopupView _view;
         private CarOrder _currentOrder;
+
+        public MarkerOrderDetailPopupPresenter(CarInspectionService inspectionService, 
+            UIManager uIManager, StaticDataService staticData)
+        {
+            _inspectionService = inspectionService;
+            _uIManager = uIManager;
+            _staticData = staticData;
+        }
 
         internal void Show(MarketOrderDetailPopupView view, CarOrder order)
         {
@@ -33,18 +36,28 @@ namespace Assets.Code.UI.Screens
             _view.SetPrice(order.Price);
 
             _view.CloseButton.onClick.AddListener(ClickOnClose);
+            _view.InspectConditionBtn.onClick.AddListener(ClickOnInspect);
             _view.Show();
         }
 
         internal void Close()
         {
             _view.CloseButton.onClick.RemoveListener(ClickOnClose);
+            _view.InspectConditionBtn.onClick.RemoveListener(ClickOnInspect);
             _view.Hide();
         }
+
+
 
         private void ClickOnClose()
         {
             _uIManager.CloseScreen<MarketOrderDetailPopup>();
+        }
+
+        private void ClickOnInspect()
+        {
+            _inspectionService.Inspect(_currentOrder.Stats);
+            _view.CarStatsPanelView.RefreshStats(_currentOrder.Stats);
         }
     }
 }

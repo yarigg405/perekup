@@ -27,7 +27,7 @@ namespace Assets.Code.Market
             return new CarOrder
             {
                 OrderGuid = System.Guid.NewGuid().ToString(),
-                Price = (ulong)Random.Range(10_000, 100_000),
+                Price = (ulong)Random.Range(100, 1300),
                 Stats = new()
                 {
                     CarId = _staticData.GetAllCarIds().GetRandomItem(),
@@ -54,7 +54,7 @@ namespace Assets.Code.Market
 
         public CarOrder GetOrder(string orderGuid)
         {
-            return _tempOrders.First(x=>x.OrderGuid == orderGuid);
+            return _tempOrders.First(x => x.OrderGuid == orderGuid);
         }
     }
 }

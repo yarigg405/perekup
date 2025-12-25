@@ -12,9 +12,9 @@ namespace Assets.Code.UI.Screens
         [SerializeField] private CarStatsPanelView _carStatsPanel;
         [SerializeField] private TickableText _orderPriceTmp;
 
-        [SerializeField] private Button _checkConditionBtn;
-        [SerializeField] private Button _tryFraudBtn;
-        [SerializeField] private Button _tradeBtn;
+        [field: SerializeField] public Button InspectConditionBtn { get; private set; }
+        [field: SerializeField] public Button TryFraudBtn { get; private set; }
+        [field: SerializeField] public Button TradeBtn { get; private set; }
 
         public CarStatsPanelView CarStatsPanelView => _carStatsPanel;
 

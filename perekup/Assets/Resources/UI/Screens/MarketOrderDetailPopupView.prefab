@@ -1427,9 +1427,9 @@ MonoBehaviour:
   <CloseButton>k__BackingField: {fileID: 6494651876311835807}
   _carStatsPanel: {fileID: 613757528587757025}
   _orderPriceTmp: {fileID: 9189819650931747263}
-  _checkConditionBtn: {fileID: 7922397242294784224}
-  _tryFraudBtn: {fileID: 6545466611772107589}
-  _tradeBtn: {fileID: 4917489573394483886}
+  <InspectConditionBtn>k__BackingField: {fileID: 7922397242294784224}
+  <TryFraudBtn>k__BackingField: {fileID: 6545466611772107589}
+  <TradeBtn>k__BackingField: {fileID: 4917489573394483886}
 --- !u!224 &3859253694197329258 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5307990497743642339, guid: 8eba790b7093105458e7fa69e36ffbd7, type: 3}
