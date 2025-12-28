@@ -1,8 +1,10 @@
 using Assets.Code.UI.Elements.CarStatsPanel;
 using Assets.Code.UI.Infrastructure;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Yrr.UI.Elements;
+using Yrr.Utils;
 
 
 namespace Assets.Code.UI.Screens
@@ -11,6 +13,7 @@ namespace Assets.Code.UI.Screens
     {
         [SerializeField] private CarStatsPanelView _carStatsPanel;
         [SerializeField] private TickableText _orderPriceTmp;
+        [SerializeField] private TextMeshProUGUI _realPriceTmp;
 
         [field: SerializeField] public Button InspectConditionBtn { get; private set; }
         [field: SerializeField] public Button TryFraudBtn { get; private set; }
@@ -22,6 +25,11 @@ namespace Assets.Code.UI.Screens
         {
             _orderPriceTmp.InitValue(0);
             _orderPriceTmp.SmoothChangeValue(price);
+        }
+
+        public void SetRealPrice(ulong realPrice)
+        {
+            _realPriceTmp.text = realPrice.ToShortMoneyString();
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using Assets.Code.Market;
 using Assets.Code.UI.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 namespace Assets.Code.UI.Screens
@@ -12,7 +9,7 @@ namespace Assets.Code.UI.Screens
         private readonly UIManager _uIManager;
 
         private HagglePopupView _view;
-        private CarOrder _current
+        private CarOrder _currentOrder;
 
         public HagglePopupPresenter(UIManager uIManager)
         {
@@ -23,12 +20,13 @@ namespace Assets.Code.UI.Screens
         {
             _view = view;
             _view.CloseButton.onClick.AddListener(ClickOnClose);
+            _view.Show();
         }
 
         internal void Close()
         {
             _view.CloseButton.onClick.RemoveListener(ClickOnClose);
-            _vi
+            _view.Hide();
         }
 
         private void ClickOnClose()

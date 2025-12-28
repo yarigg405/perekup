@@ -1,6 +1,5 @@
 ﻿using Assets.Code.StaticData;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Yrr.Utils;
 
 
@@ -22,6 +21,7 @@ namespace Assets.Code.Characters
         public Character GenerateRandomCharacter()
         {
             var character = new Character();
+            character.Guid = System.Guid.NewGuid().ToString();
 
             var stats = GenerateRandomStats();
             var gender = Random.Range(0f, 1f) < _chanceForGenderIsFemale ?
@@ -35,7 +35,6 @@ namespace Assets.Code.Characters
 
             character.Stats = stats;
             character.VisualName = name;
-            character.Guid = System.Guid.NewGuid().ToString();
             character.Gender = gender;
             character.IconIndex = iconIndex;
 
@@ -54,7 +53,7 @@ namespace Assets.Code.Characters
             int statsPoint = 30;
             while (statsPoint > 0)
             {
-                int index = stats.GetRandomItem();
+                int index = stats.GetRandomIndex();
                 if (stats[index] < 20)
                 {
                     stats[index]++;

@@ -17,5 +17,6 @@ MonoBehaviour:
   <CarModelName>k__BackingField: Jetta
   <Year>k__BackingField: 1984
   <CarIcon>k__BackingField: {fileID: 21300000, guid: df2628299d3f67e489173e50de1f7743, type: 3}
-  <PriceMinMax>k__BackingField: {x: 40, y: 120}
-  <VisualName>k__BackingField: Volkswagen Jetta 1984
+  <VisualName>k__BackingField: Volkswagen Jetta (1984)
+  <PriceIdealCondition>k__BackingField: 4800
+  <RandomWeight>k__BackingField: 1

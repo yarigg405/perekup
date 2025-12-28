@@ -68,7 +68,10 @@ namespace Assets.Code.Infrastructure.Installers
 
         private void RegisterGameplayServices()
         {
+            Builder.Register<CarMarketService>(Lifetime.Singleton).AsSelf();
+            Builder.Register<CharactersStorageService>(Lifetime.Singleton).AsSelf();
             Builder.Register<CarInspectionService>(Lifetime.Singleton).AsSelf();
+            Builder.Register<CarAppraiseService>(Lifetime.Singleton).AsSelf();
         }
 
 

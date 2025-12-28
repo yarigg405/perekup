@@ -19,7 +19,7 @@ namespace Assets.Code.UI.Screens
             var config = staticData.GetCar(order.Stats.CarId);
 
             CarIcon = config.CarIcon;
-            CarDescription = config.GetDescription();
+            CarDescription = config.VisualName;
             CarCondition = CalculateStatsValue(order);
             OrderPrice = order.Price.ToShortMoneyString();
             OrderGuid = order.OrderGuid;

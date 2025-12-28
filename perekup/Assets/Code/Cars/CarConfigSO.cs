@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 
@@ -12,18 +11,14 @@ namespace Assets.Code.Cars
         [field: SerializeField] public string CarModelName { get; private set; }
         [field: SerializeField] public int Year { get; private set; }
         [field: SerializeField] public Sprite CarIcon { get; private set; }
-        [field: SerializeField] public Vector2 PriceMinMax { get; private set; }
-
         [field: SerializeField] public string VisualName { get; private set; }
+        [field: SerializeField] public ulong PriceIdealCondition { get; private set; }
+        [field: SerializeField] public float RandomWeight { get; private set; }
 
-        public string GetDescription()
-        {
-          return  $"{CarBrandName} {CarModelName} ({Year})";
-        }
 
         private void OnValidate()
         {
-            VisualName = $"{CarBrandName} {CarModelName} {Year}";
+            VisualName = $"{CarBrandName} {CarModelName} ({Year})";
         }
     }
 }

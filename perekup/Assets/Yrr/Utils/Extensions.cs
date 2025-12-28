@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace Yrr.Utils
 {
-    /// Version 0.8.3
+    /// Version 0.8.4
     public static class Extensions
     {
         public static void ClearChildren(this Transform transform)
@@ -135,6 +135,11 @@ namespace Yrr.Utils
         #region GetRandom
 
         public static float GetRandomValue(this Vector2 vector)
+        {
+            return Random.Range(vector.x, vector.y);
+        }
+
+        public static int GetRandomValue(this Vector2Int vector)
         {
             return Random.Range(vector.x, vector.y);
         }

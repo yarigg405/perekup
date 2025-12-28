@@ -8,9 +8,9 @@ namespace Assets.Code.Market
     public sealed class CarOrder
     {
         public string OrderGuid { get; set; }
-        public ulong Price { get; set; }
-        public CarStats Stats { get; set; }
         public string SellerId { get; set; }
+        public CarStats Stats { get; set; }
+        public ulong Price { get; set; }
         public float LocationDistance { get; set; }
         public int OrderDurationLifetimeDays { get; set; }
 

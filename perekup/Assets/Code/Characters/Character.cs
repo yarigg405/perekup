@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 
 namespace Assets.Code.Characters
@@ -11,6 +12,23 @@ namespace Assets.Code.Characters
         public string VisualName;
         public CharacterGender Gender;
         public int IconIndex;
+
+        public int GetStat(CharacterStats statName)
+        {
+            return Stats[(int)statName];
+        }
+
+        public int GetStatBonus(CharacterStats statName)
+        {
+            var value = Stats[(int)statName];
+            return GetStatBonus(value);
+        }
+
+        private int GetStatBonus(int statValue)
+        {
+            var modificator = (int)Mathf.Floor((statValue - 10) / 2f);
+            return modificator;
+        }
     }
 
     [Serializable]

@@ -11,16 +11,18 @@ namespace Assets.Code.UI.Screens
         private readonly StaticDataService _staticData;
         private readonly UIManager _uIManager;
         private readonly CarInspectionService _inspectionService;
+        private readonly CarAppraiseService _appraiseService;
 
         private MarketOrderDetailPopupView _view;
         private CarOrder _currentOrder;
 
-        public MarkerOrderDetailPopupPresenter(CarInspectionService inspectionService, 
-            UIManager uIManager, StaticDataService staticData)
+        public MarkerOrderDetailPopupPresenter(CarInspectionService inspectionService,
+            UIManager uIManager, StaticDataService staticData, CarAppraiseService appraiseService)
         {
             _inspectionService = inspectionService;
             _uIManager = uIManager;
             _staticData = staticData;
+            _appraiseService = appraiseService;
         }
 
         internal void Show(MarketOrderDetailPopupView view, CarOrder order)
@@ -30,10 +32,11 @@ namespace Assets.Code.UI.Screens
 
             var car = _staticData.GetCar(order.Stats.CarId);
             _view.CarStatsPanelView.SetIcon(car.CarIcon);
-            _view.CarStatsPanelView.SetDescription(car.GetDescription());
+            _view.CarStatsPanelView.SetDescription(car.VisualName);
             _view.CarStatsPanelView.InitStats(order.Stats);
 
             _view.SetPrice(order.Price);
+            _view.SetRealPrice(_appraiseService.CalculateRealPrice(order.Stats));
 
             _view.CloseButton.onClick.AddListener(ClickOnClose);
             _view.InspectConditionBtn.onClick.AddListener(ClickOnInspect);

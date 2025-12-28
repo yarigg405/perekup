@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -19,6 +20,10 @@ namespace Yrr.UI.Elements
         public UnityEvent OnSliderStop;
         public UnityEvent OnSliderMaxReached;
 
+        public event Action<float> OnSliderValueUpdated;
+
+        public float CurrentValue => _slider.value;
+
         private void Update()
         {
             if (_slider.value.Equals(_targetValue)) return;
@@ -36,6 +41,7 @@ namespace Yrr.UI.Elements
             var delta = Mathf.Abs(_slider.value - _targetValue) * 2;
             if (delta < 0.45) delta = 0.45f;
             _slider.value = Mathf.MoveTowards(_slider.value, _targetValue, delta * Time.unscaledDeltaTime * _speedModifier);
+            OnSliderValueUpdated?.Invoke(_slider.value);
 
             if (!_slider.value.Equals(_targetValue)) return;
             _isMoving = false;
@@ -64,6 +70,7 @@ namespace Yrr.UI.Elements
 
             _targetValue = value;
             _slider.value = value;
+            OnSliderValueUpdated?.Invoke(_slider.value);
         }
 
         /// <summary>
