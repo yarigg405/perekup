@@ -33,6 +33,15 @@ namespace Assets.Code.Characters
                 _storage.MaleFaces.GetRandomIndex() :
                 _storage.FemaleFaces.GetRandomIndex();
 
+            if (gender == CharacterGender.Male)
+                while (iconIndex == 10)
+                {
+                    iconIndex = gender == CharacterGender.Male ?
+                    _storage.MaleFaces.GetRandomIndex() :
+                    _storage.FemaleFaces.GetRandomIndex();
+                }
+
+
             character.Stats = stats;
             character.VisualName = name;
             character.Gender = gender;

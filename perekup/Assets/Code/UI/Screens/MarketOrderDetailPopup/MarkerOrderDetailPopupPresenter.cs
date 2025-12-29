@@ -1,5 +1,6 @@
 ﻿using Assets.Code.Gameplay;
 using Assets.Code.Market;
+using Assets.Code.Player;
 using Assets.Code.StaticData;
 using Assets.Code.UI.Infrastructure;
 
@@ -12,17 +13,19 @@ namespace Assets.Code.UI.Screens
         private readonly UIManager _uIManager;
         private readonly CarInspectionService _inspectionService;
         private readonly CarAppraiseService _appraiseService;
+        private readonly PlayerCharacterProvider _playerCharacterProvider;
 
         private MarketOrderDetailPopupView _view;
         private CarOrder _currentOrder;
 
         public MarkerOrderDetailPopupPresenter(CarInspectionService inspectionService,
-            UIManager uIManager, StaticDataService staticData, CarAppraiseService appraiseService)
+            UIManager uIManager, StaticDataService staticData, CarAppraiseService appraiseService, PlayerCharacterProvider playerCharacterProvider)
         {
             _inspectionService = inspectionService;
             _uIManager = uIManager;
             _staticData = staticData;
             _appraiseService = appraiseService;
+            _playerCharacterProvider = playerCharacterProvider;
         }
 
         internal void Show(MarketOrderDetailPopupView view, CarOrder order)
@@ -59,7 +62,7 @@ namespace Assets.Code.UI.Screens
 
         private void ClickOnInspect()
         {
-            _inspectionService.Inspect(_currentOrder.Stats);
+            _inspectionService.Inspect(_currentOrder.Stats, _playerCharacterProvider.PlayerCharacter);
             _view.CarStatsPanelView.RefreshStats(_currentOrder.Stats);
         }
     }

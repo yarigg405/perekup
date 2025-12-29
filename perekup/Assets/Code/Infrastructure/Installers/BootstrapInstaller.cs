@@ -40,6 +40,7 @@ namespace Assets.Code.Infrastructure.Installers
 
         private void RegisterPlayerServices()
         {
+            Builder.Register<PlayerCharacterProvider>(Lifetime.Singleton).AsSelf();
             Builder.Register<GameSettingsContainer>(Lifetime.Singleton).AsSelf();
             Builder.Register<PlayerMoneyStorage>(Lifetime.Singleton).AsSelf();
             Builder.Register<PlayerCarsStorage>(Lifetime.Singleton).AsSelf();
@@ -68,6 +69,7 @@ namespace Assets.Code.Infrastructure.Installers
 
         private void RegisterGameplayServices()
         {
+            Builder.Register<RandomDiceService>(Lifetime.Singleton).AsSelf();
             Builder.Register<CarMarketService>(Lifetime.Singleton).AsSelf();
             Builder.Register<CharactersStorageService>(Lifetime.Singleton).AsSelf();
             Builder.Register<CarInspectionService>(Lifetime.Singleton).AsSelf();
