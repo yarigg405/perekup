@@ -15,7 +15,6 @@
   <Project Path="Unity.AI.Navigation.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
   <Project Path="Unity.AI.Navigation.Updater.csproj" />
-  <Project Path="DOTween.Modules.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
