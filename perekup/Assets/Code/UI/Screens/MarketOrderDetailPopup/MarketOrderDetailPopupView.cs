@@ -1,4 +1,4 @@
-using Assets.Code.UI.Elements.CarStatsPanel;
+using Assets.Code.UI.Elements;
 using Assets.Code.UI.Infrastructure;
 using TMPro;
 using UnityEngine;
@@ -16,7 +16,6 @@ namespace Assets.Code.UI.Screens
         [SerializeField] private TextMeshProUGUI _realPriceTmp;
 
         [field: SerializeField] public Button InspectConditionBtn { get; private set; }
-        [field: SerializeField] public Button TryFraudBtn { get; private set; }
         [field: SerializeField] public Button TradeBtn { get; private set; }
 
         public CarStatsPanelView CarStatsPanelView => _carStatsPanel;

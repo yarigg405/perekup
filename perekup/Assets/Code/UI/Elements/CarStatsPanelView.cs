@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Yrr.UI.Elements;
 
 
-namespace Assets.Code.UI.Elements.CarStatsPanel
+namespace Assets.Code.UI.Elements
 {
     public sealed class CarStatsPanelView : MonoBehaviour
     {

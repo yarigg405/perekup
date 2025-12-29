@@ -43,6 +43,7 @@ namespace Assets.Code.UI.Screens
 
             _view.CloseButton.onClick.AddListener(ClickOnClose);
             _view.InspectConditionBtn.onClick.AddListener(ClickOnInspect);
+            _view.TradeBtn.onClick.AddListener(ClickOnTrade);
             _view.Show();
         }
 
@@ -50,6 +51,7 @@ namespace Assets.Code.UI.Screens
         {
             _view.CloseButton.onClick.RemoveListener(ClickOnClose);
             _view.InspectConditionBtn.onClick.RemoveListener(ClickOnInspect);
+            _view.TradeBtn.onClick.RemoveListener(ClickOnTrade);
             _view.Hide();
         }
 
@@ -64,6 +66,11 @@ namespace Assets.Code.UI.Screens
         {
             _inspectionService.Inspect(_currentOrder.Stats, _playerCharacterProvider.PlayerCharacter);
             _view.CarStatsPanelView.RefreshStats(_currentOrder.Stats);
+        }
+
+        private void ClickOnTrade()
+        {
+            _uIManager.OpenScreen<HagglePopup>(_currentOrder);
         }
     }
 }
