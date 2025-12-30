@@ -12,14 +12,14 @@ namespace Assets.Code.UI.Screens
         private readonly StaticDataService _staticData;
         private readonly UIManager _uIManager;
         private readonly CarInspectionService _inspectionService;
-        private readonly CarAppraiseService _appraiseService;
+        private readonly CarPriceEstimateService _appraiseService;
         private readonly PlayerCharacterProvider _playerCharacterProvider;
 
         private MarketOrderDetailPopupView _view;
         private CarOrder _currentOrder;
 
         public MarkerOrderDetailPopupPresenter(CarInspectionService inspectionService,
-            UIManager uIManager, StaticDataService staticData, CarAppraiseService appraiseService, PlayerCharacterProvider playerCharacterProvider)
+            UIManager uIManager, StaticDataService staticData, CarPriceEstimateService appraiseService, PlayerCharacterProvider playerCharacterProvider)
         {
             _inspectionService = inspectionService;
             _uIManager = uIManager;
@@ -39,10 +39,11 @@ namespace Assets.Code.UI.Screens
             _view.CarStatsPanelView.InitStats(order.Stats);
 
             _view.SetPrice(order.Price);
-            _view.SetRealPrice(_appraiseService.CalculateRealPrice(order.Stats));
+            _view.SetRealPrice(_appraiseService.CalculateKnownPrice(order.Stats));
 
             _view.CloseButton.onClick.AddListener(ClickOnClose);
             _view.InspectConditionBtn.onClick.AddListener(ClickOnInspect);
+            _view.InspectConditionBtn.interactable = true;
             _view.TradeBtn.onClick.AddListener(ClickOnTrade);
             _view.Show();
         }
@@ -64,12 +65,15 @@ namespace Assets.Code.UI.Screens
 
         private void ClickOnInspect()
         {
+            _view.InspectConditionBtn.interactable = false;
             _inspectionService.Inspect(_currentOrder.Stats, _playerCharacterProvider.PlayerCharacter);
             _view.CarStatsPanelView.RefreshStats(_currentOrder.Stats);
+            _view.SetRealPrice(_appraiseService.CalculateKnownPrice(_currentOrder.Stats));
         }
 
         private void ClickOnTrade()
         {
+            _uIManager.CloseScreen<MarketOrderDetailPopup>();
             _uIManager.OpenScreen<HagglePopup>(_currentOrder);
         }
     }

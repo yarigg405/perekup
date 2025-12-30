@@ -4,7 +4,7 @@ using Assets.Code.StaticData;
 
 namespace Assets.Code.Market
 {
-    public sealed class CarAppraiseService
+    public sealed class CarPriceEstimateService
     {
         private const float _bodyCostModifier = 0.3f;
         private const float _engineCostModifier = 0.25f;
@@ -15,7 +15,7 @@ namespace Assets.Code.Market
 
         private readonly StaticDataService _staticData;
 
-        public CarAppraiseService(StaticDataService staticData)
+        public CarPriceEstimateService(StaticDataService staticData)
         {
             _staticData = staticData;
         }

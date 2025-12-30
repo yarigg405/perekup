@@ -9,7 +9,7 @@ namespace Assets.Code.Player
         public event Action<ulong> OnMoneyEarned;
         public event Action<ulong> OnMoneySpent;
 
-        public ulong PlayerMoney { get; private set; } = 500;
+        public ulong PlayerMoney { get; private set; } = 1000;
 
         public void EarnMoney(ulong amount)
         {

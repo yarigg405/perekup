@@ -11,7 +11,7 @@ namespace Assets.Code.Market
     {
         private readonly StaticDataService _staticData;
         private readonly CharactersStorageService _charactersStorage;
-        private readonly CarAppraiseService _carAppraiseService;
+        private readonly CarPriceEstimateService _carAppraiseService;
 
         private readonly RandomizerByWeight<string> _weightetCarIds = new();
         private readonly RandomizerByWeight<CarOrderGenerationPattern> _weightetPatterns = new();
@@ -23,7 +23,7 @@ namespace Assets.Code.Market
 
         public CarOrderGenerator(StaticDataService staticData,
             CharactersStorageService charactersStorage,
-            CarAppraiseService carAppraiseService)
+            CarPriceEstimateService carAppraiseService)
         {
             _staticData = staticData;
             _charactersStorage = charactersStorage;
