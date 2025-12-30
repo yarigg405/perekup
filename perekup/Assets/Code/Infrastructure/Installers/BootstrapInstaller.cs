@@ -75,6 +75,7 @@ namespace Assets.Code.Infrastructure.Installers
             Builder.Register<CarInspectionService>(Lifetime.Singleton).AsSelf();
             Builder.Register<CarPriceEstimateService>(Lifetime.Singleton).AsSelf();
             Builder.Register<HagglingService>(Lifetime.Singleton).AsSelf();
+            Builder.Register<CarBuyingService>(Lifetime.Singleton).AsSelf();
         }
 
 

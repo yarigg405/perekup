@@ -11,7 +11,6 @@ namespace Assets.Code.Market
         public string SellerId { get; set; }
         public CarStats Stats { get; set; }
         public ulong Price { get; set; }
-        public float LocationDistance { get; set; }
         public int OrderDurationLifetimeDays { get; set; }
 
 
@@ -22,7 +21,6 @@ namespace Assets.Code.Market
                 OrderGuid = OrderGuid,
                 Price = Price,
                 SellerId = SellerId,
-                LocationDistance = LocationDistance,
                 OrderDurationLifetimeDays = OrderDurationLifetimeDays,
                 Stats = Stats.Copy()
             };

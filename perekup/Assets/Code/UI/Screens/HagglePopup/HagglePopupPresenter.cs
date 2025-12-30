@@ -4,6 +4,7 @@ using Assets.Code.Market;
 using Assets.Code.Player;
 using Assets.Code.StaticData;
 using Assets.Code.UI.Infrastructure;
+using System;
 using UnityEngine;
 
 
@@ -18,6 +19,7 @@ namespace Assets.Code.UI.Screens
         private readonly CharactersStorageService _charactersStorageService;
         private readonly CarPriceEstimateService _carEstimateService;
         private readonly HagglingService _hagglingService;
+        private readonly CarBuyingService _carBuyingService;
 
         private HagglePopupView _view;
         private CarOrder _currentOrder;
@@ -31,7 +33,7 @@ namespace Assets.Code.UI.Screens
         public HagglePopupPresenter(UIManager uIManager, CharactersGenerationStorage charactersConfig,
             StaticDataService staticDataService, PlayerCharacterProvider playerCharacterProvider,
             CharactersStorageService charactersStorageService, CarPriceEstimateService carEstimateService,
-            HagglingService hagglingService)
+            HagglingService hagglingService, CarBuyingService carBuyingService)
         {
             _uIManager = uIManager;
             _charactersConfig = charactersConfig;
@@ -40,6 +42,7 @@ namespace Assets.Code.UI.Screens
             _charactersStorageService = charactersStorageService;
             _carEstimateService = carEstimateService;
             _hagglingService = hagglingService;
+            _carBuyingService = carBuyingService;
         }
 
         internal void Show(HagglePopupView view, CarOrder order)
@@ -51,6 +54,7 @@ namespace Assets.Code.UI.Screens
             _view.TryConvinceBtn.onClick.AddListener(ClickOnTryConvince);
             _view.TryLieBtn.onClick.AddListener(ClickOnTryLie);
             _view.TryCharmBtn.onClick.AddListener(ClickOnTryCharm);
+            _view.BuyButton.onClick.AddListener(ClickOnBuy);
 
             _view.TryConvinceBtn.interactable = true;
             _view.TryLieBtn.interactable = true;
@@ -88,6 +92,7 @@ namespace Assets.Code.UI.Screens
         {
             _view.PriceChangingSlider.onValueChanged.RemoveListener(HandleSliderChanged);
             _view.CloseButton.onClick.RemoveListener(ClickOnClose);
+            _view.BuyButton.onClick.RemoveListener(ClickOnBuy);
 
             _view.TryConvinceBtn.onClick.RemoveListener(ClickOnTryConvince);
             _view.TryLieBtn.onClick.RemoveListener(ClickOnTryLie);
@@ -120,6 +125,17 @@ namespace Assets.Code.UI.Screens
             _view.TryCharmBtn.interactable = false;
             _percentModificator += _hagglingService.ResultOfCharming(_buyer, _seller);
             RecalculateAcceptingPercent();
+        }
+
+        private void ClickOnBuy()
+        {
+            if (_carBuyingService.TryBuyCar(_currentOrder, _currentPrice))
+            {
+                _uIManager.CloseScreen<HagglePopup>();
+                _uIManager.CloseScreen<MarketOrderDetailPopup>();
+                _uIManager.OpenScreen<MarketScreen>();
+
+            }
         }
 
 

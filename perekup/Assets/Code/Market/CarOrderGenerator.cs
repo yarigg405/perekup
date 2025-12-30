@@ -132,7 +132,6 @@ namespace Assets.Code.Market
             carOrder.Stats = stats;
 
             carOrder.Price = CalculatePrice(stats, seller, pattern);
-            carOrder.LocationDistance = Random.Range(10, 300);
             carOrder.OrderDurationLifetimeDays = 30;
 
             return carOrder;

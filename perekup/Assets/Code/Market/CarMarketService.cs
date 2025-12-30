@@ -10,7 +10,7 @@ namespace Assets.Code.Market
     {
         private readonly CarOrderGenerator _carOrderGenerator;
 
-        private readonly List<CarOrder> _tempOrders = new();
+        private readonly List<CarOrder> _orders = new();
         private readonly Vector2Int _ordersCountMinMax = new(15, 25);
 
         public CarMarketService(CarOrderGenerator carOrderGenerator)
@@ -20,18 +20,23 @@ namespace Assets.Code.Market
 
             for (int i = 0; i < _ordersCountMinMax.GetRandomValue(); i++)
             {
-                _tempOrders.Add(_carOrderGenerator.GenerateRandomOrder());
+                _orders.Add(_carOrderGenerator.GenerateRandomOrder());
             }
         }
 
         public IEnumerable<CarOrder> GetCurrentOrders()
         {
-            return _tempOrders;
+            return _orders;
         }
 
         public CarOrder GetOrder(string orderGuid)
         {
-            return _tempOrders.First(x => x.OrderGuid == orderGuid);
+            return _orders.First(x => x.OrderGuid == orderGuid);
+        }
+
+        public void RemoveCarOrderFromDataBase(CarOrder carOrder)
+        {
+            _orders.Remove(carOrder);
         }
     }
 }
