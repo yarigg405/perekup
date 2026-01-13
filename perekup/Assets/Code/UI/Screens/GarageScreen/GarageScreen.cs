@@ -1,16 +1,16 @@
-﻿using Assets.Code.UI.Infrastructure;
+using Assets.Code.UI.Infrastructure;
 
 
 namespace Assets.Code.UI.Screens
 {
-    public sealed class MarketScreen : IScreen
+    public sealed class GarageScreen : IScreen
     {
         private readonly IScreenViewsProvider _viewsProvider;
         private readonly LayerUI_Screens _screenRoot;
-        private readonly MarketScreenPresenter _presenter;
+        private readonly GarageScreenPresenter _presenter;
 
-        public MarketScreen(IScreenViewsProvider viewsProvider, LayerUI_Screens screenRoot,
-            MarketScreenPresenter presenter)
+
+        public GarageScreen(IScreenViewsProvider viewsProvider, LayerUI_Screens screenRoot, GarageScreenPresenter presenter)
         {
             _viewsProvider = viewsProvider;
             _screenRoot = screenRoot;
@@ -19,7 +19,7 @@ namespace Assets.Code.UI.Screens
 
         void IScreen.Show(object args)
         {
-            var view = _viewsProvider.GetView<MarketScreenView>();
+            var view = _viewsProvider.GetView<GarageScreenView>();
             view.transform.SetParent(_screenRoot.transform);
             view.transform.SetAsLastSibling();
             _presenter.Show(view);

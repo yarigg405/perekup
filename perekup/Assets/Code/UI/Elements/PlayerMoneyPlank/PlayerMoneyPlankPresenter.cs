@@ -19,13 +19,13 @@ namespace Assets.Code.UI.Elements.PlayerMoneyPlank
 
         void IStartable.Start()
         {
-            _storage.OnPlayerChanged += OnMoneyChanged;
+            _storage.OnMoneyChanged += OnMoneyChanged;
             _view.SetupMoney(_storage.PlayerMoney);
         }
 
         void IDisposable.Dispose()
         {
-            _storage.OnPlayerChanged -= OnMoneyChanged;
+            _storage.OnMoneyChanged -= OnMoneyChanged;
         }
 
         private void OnMoneyChanged(ulong money)

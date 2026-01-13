@@ -44,6 +44,9 @@ namespace Assets.Code.Infrastructure.Installers
 
             Builder.Register<HagglePopup>(Lifetime.Singleton);
             Builder.Register<HagglePopupPresenter>(Lifetime.Transient);
+
+            Builder.Register<GarageScreen>(Lifetime.Singleton);
+            Builder.Register<GarageScreenPresenter>(Lifetime.Transient);
         }
 
         private void RegisterUiElements()

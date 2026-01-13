@@ -5,7 +5,7 @@ namespace Assets.Code.Player
 {
     public sealed class PlayerMoneyStorage
     {
-        public event Action<ulong> OnPlayerChanged;
+        public event Action<ulong> OnMoneyChanged;
         public event Action<ulong> OnMoneyEarned;
         public event Action<ulong> OnMoneySpent;
 
@@ -15,14 +15,14 @@ namespace Assets.Code.Player
         {
             PlayerMoney += amount;
             OnMoneyEarned?.Invoke(amount);
-            OnPlayerChanged?.Invoke(PlayerMoney);
+            OnMoneyChanged?.Invoke(PlayerMoney);
         }
 
         public void SpentMoney(ulong amount)
         {
             PlayerMoney -= amount;
             OnMoneySpent?.Invoke(amount);
-            OnPlayerChanged?.Invoke(PlayerMoney);
+            OnMoneyChanged?.Invoke(PlayerMoney);
         }
     }
 }

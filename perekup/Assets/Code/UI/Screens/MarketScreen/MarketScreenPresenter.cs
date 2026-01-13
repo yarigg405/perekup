@@ -12,6 +12,8 @@ namespace Assets.Code.UI.Screens
         private readonly StaticDataService _staticData;
         private readonly UIManager _uiManager;
 
+        private MarketScreenView _view;
+
         public MarketScreenPresenter(UIManager uiManager,
             StaticDataService staticData, CarMarketService service)
         {
@@ -19,8 +21,6 @@ namespace Assets.Code.UI.Screens
             _staticData = staticData;
             _service = service;
         }
-
-        private MarketScreenView _view;
 
 
 
